@@ -39,9 +39,7 @@ export default function RootLayout({
     >
       <body className={`${nunito.className} min-h-full flex flex-col`}>
         <Navbar />
-        <main className=" flex-1 h-full">
           {children}
-        </main>
         <Footer />
       </body>
     </html>

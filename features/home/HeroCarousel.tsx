@@ -38,7 +38,6 @@ export default function HeroCarousel() {
 
   useEffect(() => {
     if (!withTransition && trackRef.current) {
-      // força o navegador a "processar" a posição sem transição
       trackRef.current.getBoundingClientRect();
       requestAnimationFrame(() => {
         setWithTransition(true);
