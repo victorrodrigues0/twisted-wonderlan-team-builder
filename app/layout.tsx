@@ -5,6 +5,8 @@ import "./globals.css";
 import { Nunito } from 'next/font/google';
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -38,9 +40,11 @@ export default function RootLayout({
       className={`h-full w-full antialiased`}
     >
       <body className={`${nunito.className} min-h-full flex flex-col`}>
-        <Navbar />
+        <AppRouterCacheProvider>
+          <Navbar />
           {children}
-        <Footer />
+          <Footer />
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

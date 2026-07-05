@@ -3,11 +3,12 @@ import Card from "./Card";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 interface TeamProps {
+    idTeam: number,
     cards: CardListProps;
     teamName: string;
 }
 
-const Team = ({ cards, teamName }: TeamProps) => {
+const Team = ({ idTeam, cards, teamName }: TeamProps) => {
     return (
         <div
             className="bg-surface w-[48%] min-w-[280px] self-start 
@@ -21,14 +22,16 @@ const Team = ({ cards, teamName }: TeamProps) => {
                 >
                     {teamName}
                 </h1>
-               <span
-               className="cursor-pointer p-2 px-5 rounded-md bg-accent"
-               >
-                 <RemoveRedEyeIcon
-                className="w-full h-full"
-                key={0}
-                />
-               </span>
+                <a href={`/teams/${idTeam}`}>
+                    <span
+                        className="cursor-pointer p-2 px-5 rounded-md bg-accent"
+                    >
+                        <RemoveRedEyeIcon
+                            className="w-full h-full"
+                            key={0}
+                        />
+                    </span>
+                </a>
             </div>
             <div
                 className="w-full flex justify-evenly p-2 gap-2"
