@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-br"
       className={`h-full w-full antialiased`}
     >
       <body className={`${nunito.className} min-h-full flex flex-col`}>

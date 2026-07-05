@@ -24,6 +24,12 @@ export interface Card {
   attackElements: CardAttackElement[];
 }
 
+export interface CardProps {
+  card: Card,
+  statsVisibility: boolean
+}
+export type CardListProps = Card[];
+
 export const mockCards: Card[] = [
   {
     id: 1,
@@ -52,8 +58,9 @@ export const mockCards: Card[] = [
     attack: 4200.75,
     imageUrl: "/images/hero/slide-6.webp",
     attackElements: [
-      { elementType: "FLORA", actionType: "ATTACK", position: 1 },
-      { elementType: "FIRE", actionType: "ATTACK", position: 2 },
+      { elementType: "FIRE", actionType: "ATTACK", position: 1 },
+      { elementType: "COSMO", actionType: "ATTACK", position: 2 },
+      { elementType: "AQUA", actionType: "HEAL", position: 3 },
     ],
   },
   {
@@ -67,7 +74,41 @@ export const mockCards: Card[] = [
     attack: 1980.0,
     imageUrl: "/images/hero/slide-7.webp",
     attackElements: [
-      { elementType: "AQUA", actionType: "ATTACK", position: 1 },
+      { elementType: "FIRE", actionType: "ATTACK", position: 1 },
+      { elementType: "COSMO", actionType: "ATTACK", position: 2 },
+      { elementType: "AQUA", actionType: "HEAL", position: 3 },
+    ],
+  },
+  {
+    id: 4,
+    characterName: "Ace Trappola",
+    outfitName: "Uniforme de educação física",
+    rarity: "R",
+    dorm: "HEARTSLABYUL",
+    battleType: "DEFENSE",
+    hp: 2700.25,
+    attack: 1980.0,
+    imageUrl: "/images/hero/slide-7.webp",
+    attackElements: [
+      { elementType: "FIRE", actionType: "ATTACK", position: 1 },
+      { elementType: "COSMO", actionType: "ATTACK", position: 2 },
+      { elementType: "AQUA", actionType: "HEAL", position: 3 },
+    ],
+  },
+  {
+    id: 5,
+    characterName: "Ace Trappola",
+    outfitName: "Uniforme de educação física",
+    rarity: "R",
+    dorm: "HEARTSLABYUL",
+    battleType: "DEFENSE",
+    hp: 2700.25,
+    attack: 1980.0,
+    imageUrl: "/images/hero/slide-7.webp",
+    attackElements: [
+      { elementType: "FIRE", actionType: "ATTACK", position: 1 },
+      { elementType: "COSMO", actionType: "ATTACK", position: 2 },
+      { elementType: "AQUA", actionType: "HEAL", position: 3 },
     ],
   },
 ];

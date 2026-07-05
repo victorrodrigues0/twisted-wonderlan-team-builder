@@ -1,16 +1,21 @@
-import Card from "@/features/team/components/Card";
-import { mockCards } from "@/mocks/cards";
+import TeamList from "@/features/team/components/TeamList";
 
 export default function Page() {
-    const cards = mockCards;
 
     return (
-        <div
-            className="bg-bg flex-1 flex justify-center items-center gap-10"
+        <main
+            className="bg-bg flex-1 flex flex-col items-center gap-10 py-8"
         >
-            {cards.map(card => (
-                <Card key={card.id} card={card} />
-            ))}
-        </div>
+            <div
+                className="self-stretch mt-20 flex items-center justify-center"
+            >
+                <p>search</p>
+            </div>
+            <section
+                className="w-full self-stretch px-4 py-6"
+            >
+                <TeamList />
+            </section>
+        </main>
     )
 }
