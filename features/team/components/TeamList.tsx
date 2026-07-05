@@ -1,15 +1,27 @@
-import { mockCards } from "@/mocks/cards";
 import Team from "./Team";
-import { mockTeams } from "@/mocks/teams";
+import { useContext } from "react";
+import { TeamsContext } from "@/app/contexts/teams/TeamsContext";
+import { notFound } from "next/navigation";
 
-const TeamList = () => {
-    const teams = mockTeams;
+interface TeamListProps {
+    search: string;
+}
+
+const TeamList = ({ search }: TeamListProps) => {
+    const teams = useContext(TeamsContext);
+
+    if (!teams) {
+        notFound();
+    }
+
+    const filtredTeams = search.toLowerCase() !== "" ? teams.filter((team) => team.name.includes(search.toLowerCase())) : teams;
+    
 
     return (
         <div
             className="w-full flex flex-wrap justify-evenly gap-4 p-3"
         >
-            {teams.map((team) =>
+            {filtredTeams.map((team) =>
                 <Team
                     key={team.id}
                     idTeam={team.id}

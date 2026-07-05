@@ -6,6 +6,7 @@ import { Nunito } from 'next/font/google';
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { TeamsProvider } from "./contexts/teams/TeamsProvider";
 
 
 const nunito = Nunito({
@@ -41,9 +42,11 @@ export default function RootLayout({
     >
       <body className={`${nunito.className} min-h-full flex flex-col`}>
         <AppRouterCacheProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <TeamsProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </TeamsProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

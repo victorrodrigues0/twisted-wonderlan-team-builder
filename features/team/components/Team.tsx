@@ -11,7 +11,7 @@ interface TeamProps {
 const Team = ({ idTeam, cards, teamName }: TeamProps) => {
     return (
         <div
-            className="bg-surface w-[48%] min-w-[280px] self-start 
+            className="bg-surface w-[48%] min-w-70 self-start 
             overflow-hidden rounded-lg"
         >
             <div
@@ -24,7 +24,8 @@ const Team = ({ idTeam, cards, teamName }: TeamProps) => {
                 </h1>
                 <a href={`/teams/${idTeam}`}>
                     <span
-                        className="cursor-pointer p-2 px-5 rounded-md bg-accent"
+                        className="cursor-pointer mt-5 p-2 px-5 rounded-md bg-accent hover:bg-accent-hover
+                        transition-all ease duration-300 delay-75"
                     >
                         <RemoveRedEyeIcon
                             className="w-full h-full"
