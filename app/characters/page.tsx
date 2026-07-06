@@ -23,7 +23,8 @@ export default function Page() {
                 onSearchChange={setSearch}
                 className="w-full py-6 px-8"
             />
-            <section className="flex-1 gap-10 py-10 self-stretch p-3 flex flex-wrap justify-center items-baseline overflow-y-auto">
+            <section className="flex-1 gap-10 py-10 self-stretch p-3 flex
+             flex-wrap justify-center items-baseline overflow-y-auto mx-20 m-10 bg-surface">
                 {filteredCharacters.map((char) =>
                     <CardCharacter key={char.id} character={char} />
                 )}

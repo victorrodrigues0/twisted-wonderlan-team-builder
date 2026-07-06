@@ -2,7 +2,9 @@ import { CharacterCardProps } from "../types";
 
 const CardCharacter = ({ character }: CharacterCardProps) => {
     return (
-        <div className="w-60 aspect-square rounded-lg overflow-hidden shadow-md flex flex-col bg-surface
+        <div className="w-60 aspect-square rounded-lg overflow-hidden shadow-md flex flex-col bg-bg
+         hover:bg-surface-elevated transition-all ease duration-200 delay-75 transform
+        hover:-translate-1
         ">
             <img
                 src={character.imageUrl}

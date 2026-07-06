@@ -5,7 +5,7 @@ import CardMagic from "./CardMagic";
 const Card = ({ card, statsVisibility }: CardProps) => {
     return (
         <div
-            className="w-[30%] aspect-3/4 relative bg-cover bg-center bg-surface 
+            className="w-[30%] aspect-3/4 relative bg-cover bg-center bg-bg 
             hover:bg-surface-elevated transition-all ease duration-200 rounded-md
             "
             style={{ backgroundImage: `url(${card.imageUrl})` }}
