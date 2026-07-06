@@ -28,7 +28,7 @@ const Navbar = () => {
             >
                 <Link
                     hrefLink="/teams"
-                    label="times"
+                    label="teams"
                     textColor={pathname === "/teams" ? "text-accent" : "text-text-primary" }
                 />
                 <Link
@@ -38,7 +38,7 @@ const Navbar = () => {
                 />
                 <Link
                     hrefLink="/characters"
-                    label="personagens"
+                    label="characters"
                      textColor={pathname === "/characters" ? "text-accent" : "text-text-primary" }
                 />
             </div>

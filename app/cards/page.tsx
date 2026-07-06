@@ -5,9 +5,12 @@ import Card from "../components/ui/Card";
 import SearchArea from "../components/ui/SearchArea";
 import { add } from "@/mocks/functions";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Page() {
     const cards = mockCards;
+    const url = usePathname() + "/";
+
     const [search, setSearch] = useState("");
     const filteredCards = search.trim() === ""
         ? cards
@@ -25,10 +28,14 @@ export default function Page() {
             />
             <section className="bg-surface mx-20 m-10 rounded-sm flex-1 gap-10 py-10 self-stretch p-3 flex flex-wrap justify-center items-baseline overflow-y-auto">
                 {filteredCards.map((card) =>
-                    <Card
+                    <a
                         key={card.id}
-                        card={card}
-                    />
+                        href={`${url}${card.id}`}>
+                        <Card
+                            key={card.id}
+                            card={card}
+                        />
+                    </a>
                 )}
             </section>
         </main>
