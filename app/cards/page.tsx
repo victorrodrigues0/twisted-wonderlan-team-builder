@@ -1,18 +1,18 @@
 "use client"
 
-import { useState } from "react";
-import { add } from "@/mocks/functions";
+import { mockCards } from "@/mocks/cards";
+import Card from "../components/ui/Card";
 import SearchArea from "../components/ui/SearchArea";
-import CardCharacter from "@/features/characters/components/CardCharacter";
-import { mockCharacters } from "@/mocks/characters";
+import { add } from "@/mocks/functions";
+import { useState } from "react";
 
 export default function Page() {
+    const cards = mockCards;
     const [search, setSearch] = useState("");
-    const characters = mockCharacters;
-    const filteredCharacters = search.trim() === ""
-        ? characters
-        : characters.filter((char) =>
-            char.name.toLowerCase().includes(search.toLowerCase())
+    const filteredCards = search.trim() === ""
+        ? cards
+        : cards.filter((card) =>
+            card.characterName.toLowerCase().includes(search.toLowerCase())
         );
 
     return (
@@ -24,8 +24,11 @@ export default function Page() {
                 className="w-full py-6 px-8"
             />
             <section className="flex-1 gap-10 py-10 self-stretch p-3 flex flex-wrap justify-center items-baseline overflow-y-auto">
-                {filteredCharacters.map((char) =>
-                    <CardCharacter key={char.id} character={char} />
+                {filteredCards.map((card) =>
+                    <Card
+                        key={card.id}
+                        card={card}
+                    />
                 )}
             </section>
         </main>

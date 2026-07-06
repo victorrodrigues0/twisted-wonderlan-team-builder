@@ -32,6 +32,11 @@ const Navbar = () => {
                     textColor={pathname === "/teams" ? "text-accent" : "text-text-primary" }
                 />
                 <Link
+                    hrefLink="/cards"
+                    label="cards"
+                    textColor={pathname === "/cards" ? "text-accent" : "text-text-primary" }
+                />
+                <Link
                     hrefLink="/characters"
                     label="personagens"
                      textColor={pathname === "/characters" ? "text-accent" : "text-text-primary" }

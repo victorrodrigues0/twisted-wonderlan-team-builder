@@ -1,4 +1,4 @@
-import { Character } from "@/features/characters/components/types";
+import { Character } from "@/features/characters/types";
 
 export const mockCharacters: Character[] = [
   { id: 1, name: "Riddle Rosehearts", imageUrl: "/images/hero/slide-1.webp" },
