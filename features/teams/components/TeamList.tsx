@@ -14,12 +14,16 @@ const TeamList = ({ search }: TeamListProps) => {
         notFound();
     }
 
-    const filtredTeams = search.toLowerCase() !== "" ? teams.filter((team) => team.name.includes(search.toLowerCase())) : teams;
+    const query = search.trim().toLowerCase();
+
+    const filtredTeams = query !== ""
+        ? teams.filter((team) => team.name.toLowerCase().includes(query))
+        : teams;
     
 
     return (
         <div
-            className="w-full flex flex-wrap justify-evenly gap-4 p-3"
+            className="flex-1 flex flex-wrap justify-evenly gap-4 p-3"
         >
             {filtredTeams.map((team) =>
                 <Team

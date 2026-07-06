@@ -2,15 +2,18 @@
 
 import { Search } from "lucide-react";
 
-interface SearchBarProps {
+interface SearchBarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
 }
 
-const SearchBar = ({ value, onChange, placeholder = "Buscar..." }: SearchBarProps) => {
+const SearchBar = ({ value, onChange, placeholder = "Buscar...", className, ...props }: SearchBarProps) => {
   return (
-    <div className="flex items-center gap-2 bg-surface border border-border rounded-lg px-4 py-2 w-full max-w-md">
+    <div className={`flex items-center gap-2 bg-surface border border-border rounded-lg
+     px-4 py-2 w-full max-w-md ${className ?? ""}`}
+      {...props}
+    >
       <Search className="text-text-secondary" size={20} />
       <input
         type="text"
