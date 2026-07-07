@@ -15,7 +15,7 @@ export default function Page() {
             className="flex-1 flex flex-col bg-bg"
         >
             <SearchArea
-                add={add}
+                hrefLink=""
                 search={search}
                 onSearchChange={setSearch}
                 className="w-full py-6 px-8"

@@ -3,11 +3,11 @@ import SearchBar from "./SearchBar";
 
 interface SearchAreaProps extends React.HTMLAttributes<HTMLDivElement> {
     search: string,
-    add: () => void,
-    onSearchChange?: (value: string) => void
+    onSearchChange?: (value: string) => void,
+    hrefLink: string
 }
 
-const SearchArea = ({ search, add, onSearchChange, className, ...props }: SearchAreaProps) => {
+const SearchArea = ({ search, onSearchChange,hrefLink, className, ...props }: SearchAreaProps) => {
     return (
         <div
             className={`z-10 flex items-center justify-center gap-6 w-full max-w-6xl mx-auto bg-bg ${className ?? ""}`}
@@ -17,9 +17,9 @@ const SearchArea = ({ search, add, onSearchChange, className, ...props }: Search
                 value={search}
                 onChange={(value) => onSearchChange?.(value)}
             />
-            <AddButton
-                onClick={add}
-            />
+            <a href={hrefLink}>
+                <AddButton />
+            </a>
         </div>
     )
 }

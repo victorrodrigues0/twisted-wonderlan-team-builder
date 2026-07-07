@@ -1,3 +1,4 @@
+import { mockCards } from './cards';
 import { Character } from "@/features/characters/types";
 
 export const mockCharacters: Character[] = [

@@ -21,10 +21,10 @@ export default function Page() {
     return (
         <main className="flex-1 self-stretch flex flex-col bg-bg">
             <SearchArea
-                add={add}
                 search={search}
                 onSearchChange={setSearch}
                 className="w-full py-6 px-8"
+                hrefLink="/cards/create"
             />
             <section className="bg-surface mx-20 m-10 rounded-sm flex-1 gap-10 py-10 self-stretch p-3 flex flex-wrap justify-center items-baseline overflow-y-auto">
                 {filteredCards.map((card) =>
