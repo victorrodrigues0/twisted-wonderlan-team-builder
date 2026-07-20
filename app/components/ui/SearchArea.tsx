@@ -7,7 +7,7 @@ interface SearchAreaProps extends React.HTMLAttributes<HTMLDivElement> {
     hrefLink: string
 }
 
-const SearchArea = ({ search, onSearchChange,hrefLink, className, ...props }: SearchAreaProps) => {
+const SearchArea = ({ search, onSearchChange, hrefLink, className, ...props }: SearchAreaProps) => {
     return (
         <div
             className={`z-10 flex items-center justify-center gap-6 w-full max-w-6xl mx-auto bg-bg ${className ?? ""}`}
