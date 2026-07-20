@@ -21,7 +21,7 @@ export interface CreateCardFormProps {
     battleType: "ATTACK" | "DEFENSE" | "BALANCED";
     hp: number;
     attack: number;
-    imageUrl?: string;
+    imageUrl?: FileList;
     attackElements: [
         CardAttackElementFormProps,
         CardAttackElementFormProps,

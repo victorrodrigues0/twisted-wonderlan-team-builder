@@ -19,7 +19,7 @@ export const createCardFormSchema = z.object({
     battleType: z.enum(["ATTACK", "DEFENSE", "BALANCED"], { message: "Selecione um tipo de batalha" }),
     hp: z.number({ message: "Adicione a vida" }),
     attack: z.number({ message: "Adicione o ataque" }),
-    imageUrl: z.string().url("Adicione uma URL válida").optional().or(z.literal("")),
+    imageUrl: z.custom<FileList>((value) => value == null || value instanceof FileList, { message: "Selecione um arquivo" }).optional(),
     attackElements: z.tuple([
         cardAttackElementSchema,
         cardAttackElementSchema,

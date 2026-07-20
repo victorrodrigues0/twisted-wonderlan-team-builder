@@ -1,6 +1,6 @@
 "use client"
 
-import { useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { CreateCardFormProps } from "../types";
 
 const attackElementFields = [0, 1, 2] as const;
@@ -17,9 +17,13 @@ const CreateCardForm = () => {
 
     const characters = mockCharacters;
 
+    const onSubmit: SubmitHandler<CreateCardFormProps> = (data) => {
+        createCard(data);
+    };
+
     return (
         <form
-            onSubmit={handleSubmit(createCard)}
+            onSubmit={handleSubmit(onSubmit)}
             className="mx-auto flex w-full max-w-6xl flex-col gap-6 rounded-2xl border border-border bg-surface p-6 shadow-xl shadow-black/30"
         >
             <div className="space-y-1">
@@ -138,10 +142,11 @@ const CreateCardForm = () => {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium text-text-primary">Imagem (URL):</label>
+                        <label className="text-sm font-medium text-text-primary">Imagem (arquivo):</label>
                         <input
+                            type="file"
+                            accept="image/*"
                             {...register("imageUrl")}
-                            placeholder="https://exemplo.com/imagem.png"
                             className="rounded-xl border border-border bg-bg px-3 py-2 text-sm text-text-primary outline-none transition focus:border-accent"
                         />
                         {errors.imageUrl && (
@@ -157,55 +162,55 @@ const CreateCardForm = () => {
                             <span className="text-sm text-text-secondary">3 ataques</span>
                         </div>
 
-                    {attackElementFields.map((index) => (
-                        <div key={index} className="flex flex-col gap-3 rounded-xl border border-border/60 bg-surface/70 p-3">
-                            <div className="text-sm font-medium text-text-secondary">Ataque {index + 1}</div>
-                            <div className="grid gap-3 md:grid-cols-2">
+                        {attackElementFields.map((index) => (
+                            <div key={index} className="flex flex-col gap-3 rounded-xl border border-border/60 bg-surface/70 p-3">
+                                <div className="text-sm font-medium text-text-secondary">Ataque {index + 1}</div>
+                                <div className="grid gap-3 md:grid-cols-2">
+                                    <div className="flex flex-col gap-2">
+                                        <label className="text-sm font-medium text-text-primary">Elemento</label>
+                                        <select
+                                            {...register(`attackElements.${index}.elementType` as const, { required: "Selecione um elemento" })}
+                                            required
+                                            className="rounded-xl border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none transition focus:border-accent"
+                                        >
+                                            <option value="">Selecione</option>
+                                            <option value="FIRE">FIRE</option>
+                                            <option value="AQUA">AQUA</option>
+                                            <option value="FLORA">FLORA</option>
+                                            <option value="COSMO">COSMO</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="flex flex-col gap-2">
+                                        <label className="text-sm font-medium text-text-primary">Tipo de ação</label>
+                                        <select
+                                            {...register(`attackElements.${index}.actionType` as const, { required: "Selecione um tipo de ação" })}
+                                            required
+                                            className="rounded-xl border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none transition focus:border-accent"
+                                        >
+                                            <option value="">Selecione</option>
+                                            <option value="ATTACK">ATTACK</option>
+                                            <option value="HEAL">HEAL</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-medium text-text-primary">Elemento</label>
+                                    <label className="text-sm font-medium text-text-primary">Posição</label>
                                     <select
-                                        {...register(`attackElements.${index}.elementType` as const, { required: "Selecione um elemento" })}
+                                        {...register(`attackElements.${index}.position` as const, { valueAsNumber: true, required: "Selecione a posição" })}
                                         required
                                         className="rounded-xl border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none transition focus:border-accent"
                                     >
                                         <option value="">Selecione</option>
-                                        <option value="FIRE">FIRE</option>
-                                        <option value="AQUA">AQUA</option>
-                                        <option value="FLORA">FLORA</option>
-                                        <option value="COSMO">COSMO</option>
-                                    </select>
-                                </div>
-
-                                <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-medium text-text-primary">Tipo de ação</label>
-                                    <select
-                                        {...register(`attackElements.${index}.actionType` as const, { required: "Selecione um tipo de ação" })}
-                                        required
-                                        className="rounded-xl border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none transition focus:border-accent"
-                                    >
-                                        <option value="">Selecione</option>
-                                        <option value="ATTACK">ATTACK</option>
-                                        <option value="HEAL">HEAL</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </div>
                             </div>
-
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-text-primary">Posição</label>
-                                <select
-                                    {...register(`attackElements.${index}.position` as const, { valueAsNumber: true, required: "Selecione a posição" })}
-                                    required
-                                    className="rounded-xl border border-border bg-surface px-3 py-2 text-sm text-text-primary outline-none transition focus:border-accent"
-                                >
-                                    <option value="">Selecione</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
 
                     <div className="flex flex-col gap-3 rounded-xl border border-border/80 bg-bg/60 p-4">
                         <div className="flex items-center justify-between">
